@@ -1,0 +1,44 @@
+package in.ineuron.service;
+
+import in.ineuron.dao.IStudentDao;
+import in.ineuron.daofactory.StudentDaoFactory;
+import in.ineuron.model.Student;
+
+public class StudentServiceImpl implements IStudentService {
+	IStudentDao dao = StudentDaoFactory.getStudentDao();
+	@Override
+	public String addStudent(Student student) {
+		return dao.addStudent(student);
+	}
+
+	@Override
+	public Student searchStudent(Integer sid) {
+		return dao.searchStudent(sid);
+	}
+
+}
+ 22 changes: 22 additions & 0 deletions22  
+Question19/src/in/ineuron/servicefactory/StudentServiceFactory.java
+@@ -0,0 +1,22 @@
+package in.ineuron.servicefactory;
+
+import in.ineuron.service.IStudentService;
+import in.ineuron.service.StudentServiceImpl;
+
+//Abstraction logic of implementation
+public class StudentServiceFactory {
+
+	//make constructor private to avoid object creation 
+	private StudentServiceFactory() {} 
+
+	private static IStudentService studentService = null; 
+
+	public static IStudentService getStudentService() {
+
+		//singleton pattern code
+		if(studentService == null) {
+			studentService = new StudentServiceImpl();
+		}
+		return studentService; 	
+	}	
+}

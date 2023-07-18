@@ -1,0 +1,13 @@
+package in.ineuron.service;
+
+import in.ineuron.dto.Student;
+
+public class IStudentServiceImpl implements IStudentService {
+
+	@Override
+	public Student searchStudent(int sid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
